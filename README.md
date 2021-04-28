@@ -3,13 +3,8 @@
 
 # WhatsApp Web Clone
 
-Full stack WhatsApp Web clone.
-Tech Stack and NPM Packages used -
+Firebase chat POC using a whatsapp clone as design template.
 
-1. react
-2. firebase
-3. material-ui
-4. context api
-5. react-router-dom
-
-Clone the repo and do `npm start` to launch the application or checkout the [live demo here](https://whatsapp-clone-36b61.web.app/)
+TODO:
+- Improve perfomance with useMemo
+- Improve layout for chatBox
