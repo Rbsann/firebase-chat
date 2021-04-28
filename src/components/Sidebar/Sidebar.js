@@ -1,16 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux'
-import { Avatar, IconButton } from '@material-ui/core';
-import { Chat, DonutLarge, MoreVert, SearchOutlined } from '@material-ui/icons';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { IconButton } from '@material-ui/core'
+import { Chat, DonutLarge, MoreVert, SearchOutlined } from '@material-ui/icons'
 
-import SidebarChat from '../SidebarChat/SidebarChat';
-import db from '../../firebase';
+import SidebarUsers from '../SidebarUsers/SidebarUsers'
 
-import './Sidebar.css';
+import './Sidebar.css'
 
-const Sidebar = ({ users }) => {
-  console.log(users)
-
+const Sidebar = ({ users, handleClick }) => {
   return (
     <div className='sidebar'>
       <div className='sidebar__header'>
@@ -37,12 +34,22 @@ const Sidebar = ({ users }) => {
       <div className='sidebar__chats'>
         {users.map((user, index) => {
           return (
-            <SidebarChat key={index + 1} patientsId={user.id} patientsName={user.data.name} />
+            <SidebarUsers
+              key={index + 1}
+              handleClick={handleClick}
+              patientsId={user.id}
+              patientsName={user.data.name}
+            />
           )
         })}
       </div>
     </div>
   )
+}
+
+Sidebar.propTypes = {
+  user: PropTypes.array,
+  handleClick: PropTypes.func
 }
 
 export default Sidebar

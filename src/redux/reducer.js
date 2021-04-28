@@ -3,10 +3,7 @@ export const initialState = {
   users: [],
   messages: [],
   loading: false,
-  error: false,
-  messageHash: '',
-  userMessage:[],
-  dbUserHash: ''
+  error: false
 }
 
 export default function Reducer (state = initialState, action) {
@@ -17,14 +14,8 @@ export default function Reducer (state = initialState, action) {
       return { ...state, loading: true }
     case 'FETCH_USERS_SUCCESS':
       return { ...state, loading: false, users: action.users }
-    case 'SYNC_MESSAGES':
-      return { ...state, messageHash: action.messageHash }
     case 'SET_MESSAGES':
       return { ...state, messages: action.messages }
-    case 'CHANGE_MESSAGES':
-      return { ...state }
-    case 'SET_USER_MESSAGE':
-      return {...state, userMessage: action.message, dbUserHash: action.dbHash}
     default:
       return state
   }

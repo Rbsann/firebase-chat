@@ -18,9 +18,11 @@ export const fetchUsersSuccess = (users) => {
   }
 }
 
-export const syncMessages = () => {
+export const syncMessages = (userId, patientId) => {
   return {
-    type: 'SYNC_MESSAGES'
+    type: 'SYNC_MESSAGES',
+    userId,
+    patientId
   }
 }
 
@@ -37,17 +39,7 @@ export const changeMessage = () => {
   }
 }
 
-export const setUserMessage = (message, dbHash) => {
-  console.log('messgae', message, dbHash)
-  return {
-    type: 'SET_USER_MESSAGE',
-    message,
-    dbHash
-  }
-}
-
 export const sendMessage = (message, dbHash) => {
-  console.log(dbHash, 'actopn', message)
   return {
     type: 'SEND_MESSAGE',
     message,

@@ -3,23 +3,21 @@ import { fetchUsersSuccess, setMessages } from './actions'
 import reduxSagaFirestore from '../firebase'
 
 function * getUsers () {
-  console.log('entrou no saga')
   const snapshot = yield call(reduxSagaFirestore.firestore.getCollection, 'users-dev-firebase')
   const users = snapshot.docs.map(docs => ({ id: docs.id, data: docs.data() }))
   yield put(fetchUsersSuccess(users))
 }
 
 const transformMessages = (messages) => {
-  const formattedMsg = messages.docs.map(msg => ({ id: msg.id, data: msg.data() }))
-  return formattedMsg
+  return messages.data().messages
 }
 // todo add another collection for last messages, so we cna listen just to that collection, keeping
 // this collection updatable only on click
 
-function * syncMessagesSaga () {
+function * syncMessagesSaga ({ userId, patientId }) {
   const task = yield fork(
-    reduxSagaFirestore.firestore.syncCollection,
-    'messages-dev-firebase/',
+    reduxSagaFirestore.firestore.syncDocument,
+    `messages-dev-firebase/${userId}${patientId} `,
     {
       successActionCreator: setMessages,
       transform: transformMessages
@@ -30,8 +28,7 @@ function * syncMessagesSaga () {
   yield cancel(task)
 }
 
-function * sendMessage({message, dbHash}) {
-  console.log(dbHash)
+function * sendMessage ({ message, dbHash }) {
   try {
     yield call(
       reduxSagaFirestore.firestore.setDocument,
@@ -48,5 +45,4 @@ export default function * rootSaga () {
   yield takeLatest('FETCH_USERS', getUsers)
   yield takeLatest('SYNC_MESSAGES', syncMessagesSaga)
   yield takeLatest('SEND_MESSAGE', sendMessage)
-  // other stuff
 }
