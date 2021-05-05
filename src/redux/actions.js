@@ -46,3 +46,13 @@ export const sendMessage = (message, dbHash) => {
     dbHash
   }
 }
+
+
+export const login = (email, password) => {
+  console.log('teste')
+  return {
+    type: 'LOGIN',
+    email,
+    password
+  }
+}

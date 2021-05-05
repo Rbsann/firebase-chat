@@ -10,6 +10,7 @@ import {
 import './ChatBox.css'
 
 const Chat = ({ messages, handleInputChange, handleClick, message }) => {
+  console.log(messages)
   return (
     <div className='chat'>
       <div className='chat__header'>
@@ -40,7 +41,7 @@ const Chat = ({ messages, handleInputChange, handleClick, message }) => {
         {messages?.map((message, index) => (
           <div key={index + 1}>
             {/* <span className="chat__name">{message.name}</span> */}
-            <span className='chat__messageText'>{message.content}</span>
+            <span className='chat__messageText'>{message.message}</span>
           </div>
         ))}
       </div>

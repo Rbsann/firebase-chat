@@ -26,7 +26,7 @@ const ChatPage = () => {
   const handleUserClick = (patientId) => {
     if (userId) {
       dispatch(syncMessages(userId, patientId))
-      setDbhash(`${userId}${patientId} `)
+      setDbhash(`${userId}-${patientId}`)
       setMessagesToSend([])
     }
   }
@@ -37,7 +37,7 @@ const ChatPage = () => {
 
   const handleSubmitMessage = (e) => {
     e.preventDefault()
-    setMessagesToSend([...userMessages, { content: message }])
+    setMessagesToSend({message: message })
     setMessage('')
   }
 
