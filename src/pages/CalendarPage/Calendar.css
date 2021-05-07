@@ -1,0 +1,8 @@
+.calendar-frame {
+  height:95vh;
+  width: 95vw;
+  overflow:hidden;
+  position: absolute;
+  left: 2.5%;
+  top: 3%;
+}

@@ -5,7 +5,8 @@ export const initialState = {
   loading: false,
   error: false,
   token: '',
-  loginError: false
+  loginError: false,
+  userData: ''
 }
 
 export default function Reducer (state = initialState, action) {
@@ -20,10 +21,12 @@ export default function Reducer (state = initialState, action) {
       return { ...state, messages: action.messages }
     case 'LOGIN':
       return {...state, loading: true}
-    case 'LOGIN_SUCESS':
-      return {...state, token: action.token, loading: false}
+    case 'LOGIN_SUCCESS':
+      return {...state, token: action.token, loading: false, userData: action.userData}
     case 'LOGIN_ERROR':
       return {...state, loginError:true}
+    case 'PRE_LOGIN':
+      return {...state, loading: true}
     default:
       return state
   }

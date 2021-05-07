@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { IconButton } from '@material-ui/core'
 import {
@@ -9,41 +9,36 @@ import {
 } from '@material-ui/icons'
 import './ChatBox.css'
 
-const Chat = ({ messages, handleInputChange, handleClick, message }) => {
-  console.log(messages)
+const Chat = ({ messages, handleInputChange, handleClick, message, userId }) => {
+  const messagesEndRef = useRef(null);
+  const scrollToBottom = () => {
+    messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom()
+  },[messages])
+
+
   return (
     <div className='chat'>
-      <div className='chat__header'>
-        {/* <div className="chat__headerInfo">
-          {messages.length > 0 && (
-            <p>
-              Last seen{" "}
-              {new Date(
-                messages[messages.length - 1]?.timestamp?.toDate()
-              ).toLocaleString()}
-            </p>
-          )}
-        </div> */}
-        <div className='chat__headerRight'>
-          <IconButton>
-            <SearchOutlined />
-          </IconButton>
-          <IconButton>
-            <AttachFile />
-          </IconButton>
-          <IconButton>
-            <MoreVert />
-          </IconButton>
-        </div>
-      </div>
 
       <div className='chat__body'>
         {messages?.map((message, index) => (
-          <div key={index + 1}>
-            {/* <span className="chat__name">{message.name}</span> */}
-            <span className='chat__messageText'>{message.message}</span>
-          </div>
+          <>
+            {message.from === userId ? (
+              <div className='user-msg' key={index + 1}>
+                <span className='box'>{message.message}</span>
+              </div>
+            ): (
+                <div className='patient-msg' key={index + 1}>
+                  <span className='box'>{message.message}</span>
+                </div>
+            )}
+          </>
+
         ))}
+        <div ref={messagesEndRef} />
       </div>
 
       <div className='chat__footer'>

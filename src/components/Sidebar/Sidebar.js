@@ -37,8 +37,8 @@ const Sidebar = ({ users, handleClick }) => {
             <SidebarUsers
               key={index + 1}
               handleClick={handleClick}
-              patientsId={user.id}
-              patientsName={user.data.name}
+              patientsId={user.data.id}
+              patientsName={`${(user.data.firstName).toLowerCase()} ${(user.data.lastName).toLowerCase()}`}
             />
           )
         })}

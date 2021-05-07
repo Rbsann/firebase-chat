@@ -4,7 +4,7 @@ import ReduxSagaFirebase from 'redux-saga-firebase'
 
 const myFirebaseApp = firebase.initializeApp({
   apiKey: 'AIzaSyBXLghscMdEpUwkrzjPtdXtqcdl2S44_Jo',
-  authDomain: 'my-app.firebaseapp.com',
+  authDomain: 'chat-fd782.firebaseapp.com',
   databaseURL: 'https://chat-fd782.firebaseio.com',
   projectId: 'chat-fd782'
 })

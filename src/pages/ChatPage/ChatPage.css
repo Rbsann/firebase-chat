@@ -1,0 +1,6 @@
+.chat-full {
+  display:flex;
+  flex-direction: row;
+  height: 100vh;
+  overflow-x: hidden;
+}

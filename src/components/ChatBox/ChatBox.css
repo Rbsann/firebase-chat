@@ -2,6 +2,7 @@
     flex: .65;
     display: flex;
     flex-direction: column;
+    overflow:auto;
 }
 
 .chat__header {
@@ -36,7 +37,7 @@
     background-repeat: repeat;
     background-position: center;
     padding: 30px;
-    overflow: scroll;
+    overflow: auto;
     background-image: url("https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png");
 }
 
@@ -108,4 +109,42 @@
     z-index: 99;
     bottom: 120px;
     position: fixed;
+}
+
+.user-msg {
+  margin-bottom: 20px;
+
+}
+
+.user-msg > .box {
+  border: 1px solid #f75c57;
+  width: 150px;
+  display: flex;
+  height: auto;
+  min-height: 200px;
+  background:#f75c57;
+  color: white;
+  padding-left: 25px;
+  padding-right: 25px;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%);
+  word-break: break-all;
+  text-align: left;
+
+}
+
+.patient-msg {
+  position: relative;
+}
+
+.patient-msg > .box {
+  position: relative;
+  left: 79%;
+  border: 1px solid #000050;
+  max-width: 150px;
+  display: block;
+  height: auto;
+  background: #000050;
+  border-radius: 8%;
+  color: white;
+  min-height: 50px;
 }

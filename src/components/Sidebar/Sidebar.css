@@ -2,6 +2,8 @@
     flex: 0.35;
     display: flex;
     flex-direction: column;
+    max-width:50%;
+    background-color: #f75c57;
 }
 
 .sidebar__header {
@@ -52,7 +54,7 @@
 
 .sidebar__chats {
     flex: 1;
-    overflow: scroll;
+    overflow: auto;
     background-color: white;
 }
 

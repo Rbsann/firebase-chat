@@ -48,11 +48,32 @@ export const sendMessage = (message, dbHash) => {
 }
 
 
-export const login = (email, password) => {
-  console.log('teste')
+export const login = (userData) => {
   return {
     type: 'LOGIN',
-    email,
-    password
+    userData
+  }
+}
+
+export const loginSuccess = (userData, token) => {
+  console.log(userData)
+  return {
+    type: 'LOGIN_SUCCESS',
+    userData,
+    token
+  }
+}
+
+export const loginError = (error) => {
+  return {
+    type: 'LOGIN_ERROR',
+    error
+  }
+}
+
+export const preLogin = (email) => {
+  return {
+    type: 'PRE_LOGIN',
+    email
   }
 }
